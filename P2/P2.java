@@ -17,7 +17,7 @@ public class P2 {
         char c1 = '%', c2 = 'G', c3 = '6';
         String st1 = "Computer", st2 = "Science", st3 = "Excellent";
 
-        System.out.println(b1 + "," + s1 + "," + l1 + "," + int1);
+        System.out.println(b1 + "," + s1 + "," + int1 + "," + l1);
         System.out.println(f1 + "," + d1);
         System.out.println((b1 + s1 + l1 + int1) / 1000000);
         System.out.println(Math.sqrt(f1 * d1));
