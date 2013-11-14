@@ -12,7 +12,7 @@ import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class P5 {
-    private static int numberLines = 0, numberWords = 0, numberChars = 0, numberUpper = 0,
+    private static int numberLines = 0, numberTokens = 0, numberChars = 0, numberUpper = 0,
             numberLower = 0, numberDigits = 0, numSpaces = 0, numberTabs = 0, numberSpecial = 0;
 
     /**
@@ -25,8 +25,10 @@ public class P5 {
         ArrayList document = new ArrayList<String>();
         Scanner inFileScan = new Scanner(new File(inFileStr));
 
-        while (inFileScan.hasNext())
+        while (inFileScan.hasNextLine()) {
+            numberLines++;
             document.add(inFileScan.nextLine());
+        }
 
         inFileScan.close();
         return document;
@@ -38,11 +40,14 @@ public class P5 {
      */
     private static void gatherStatistics(ArrayList<String> document) {
         StringTokenizer stringTokenizer;
-        numberLines = document.size();
 
         for (String line : document) {
             stringTokenizer = new StringTokenizer(line);
-            numberWords += stringTokenizer.countTokens();
+            numberTokens += stringTokenizer.countTokens();
+            /*
+            while (stringTokenizer.hasMoreTokens())
+                System.out.println(stringTokenizer.nextToken());
+            */
 
             char[] chars = line.toCharArray();
             numberChars += chars.length;
@@ -76,7 +81,7 @@ public class P5 {
     private static void writeFile(String outFileStr) throws IOException{
         PrintWriter outFile = new PrintWriter(new File(outFileStr));
         outFile.println("Number of Lines: " + numberLines);
-        outFile.println("Number of Words: " + numberWords);
+        outFile.println("Number of Words: " + numberTokens);
         outFile.println("Number of Characters: " + numberChars);
         outFile.println("Number of Uppercase: " + numberUpper);
         outFile.println("Number of Lowercase: " + numberLower);
