@@ -67,6 +67,7 @@ public class P7 {
            for (int c = 0; c < data[r].length; c++) {
                data[r][c] &= 0b00111111;
                data[r][c] <<= 2;
+               data[r][c] |= 0b00000011;
            }
        }
     }
